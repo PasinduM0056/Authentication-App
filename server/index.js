@@ -2,11 +2,14 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const app = express();
+const authRouter = require('./routes/authRoute')
 
 // 1) MIDDLEWARE
+app.use(cors());
 app.use(express.json());
 
 // 2) ROUTE
+app.use('/api/auth', authRouter);
 
 // 3) MONGO DB CONNECTION
 mongoose.connect('mongodb+srv://pasimred05:54GmEDzYnUJY8z2I@authenticationapp.qkrxo.mongodb.net/?retryWrites=true&w=majority&appName=AuthenticationApp')
