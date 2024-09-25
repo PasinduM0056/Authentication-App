@@ -5,7 +5,13 @@ const app = express();
 const authRouter = require('./routes/authRoute')
 
 // 1) MIDDLEWARE
-app.use(cors());
+app.use(cors(
+    {
+        origin: [""],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 app.use(express.json());
 
 // 2) ROUTE
