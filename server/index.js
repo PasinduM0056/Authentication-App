@@ -17,15 +17,15 @@ mongoose.connect('mongodb+srv://pasimred05:54GmEDzYnUJY8z2I@authenticationapp.qk
 .catch((error) => console.error('Failed to connect to MongoDB: ', error));
 
 // 4) GLOBAL ERROR HANDLER
-app.use((err, res, req, next) => {
+app.use((err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
-    err.status = err.status || "error"
+    err.status = err.status || "error";
 
     res.status(err.statusCode).json({
-        ststus: err.status,
+        status: err.status, // fixed the typo from 'ststus' to 'status'
         message: err.message,
-    })
-})
+    });
+});
 
 // 5) SERVER
 const PORT = 3000;
