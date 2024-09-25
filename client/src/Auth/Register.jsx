@@ -2,11 +2,13 @@ import React from 'react'
 import { Card, Flex, Typography, Form, Input, Button, Spin } from 'antd'
 import { Link } from 'react-router-dom'
 import registerImage from '../assets/registerImage.jpg'
+import useSignup from '../hooks/useSignup'
 
 const Register = () => {
   
+  const {loading, error, registerUser} = useSignup()
   const handleRegister = (values) => {
-    console.log(values)
+    registerUser(values);
   }
 
   return (
@@ -74,13 +76,15 @@ const Register = () => {
               <Input.Password size="large" placeholder="Re-enter your Password" />
             </Form.Item>
 
-            {/* {
+            {
               error && <Alert description={error} type='error' showIcon closable className="alert"/>
 
-            } */}
+            }
 
             <Form.Item>
-              <Button type={`${loading ? '' : 'primary'}`} htmlType='submit' size='large' className='btn'>{loading ? <Spin /> : 'Create Account'}</Button>
+              <Button type={`${loading ? '' : 'primary'}`} htmlType='submit' size='large' className='btn'>
+                {loading ? <Spin /> : 'Create Account'}
+                </Button>
             </Form.Item>
             <Form.Item>
               <Link to="/login">
