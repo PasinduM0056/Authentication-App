@@ -7,7 +7,7 @@ const authRouter = require('./routes/authRoute')
 // 1) MIDDLEWARE
 app.use(cors(
     {
-        origin: "https://authentication-app-client-phi.vercel.app", // Your frontend URL
+        origin: "https://authentication-app-client-phi.vercel.app/", // Your frontend URL
     }
 ));
 app.use(express.json());
